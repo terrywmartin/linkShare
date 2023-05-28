@@ -1,0 +1,18 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+    <section class="section profile">
+     <div class="row justify-content-center">
+        <div class="col-xl-6">
+
+          <div class="card mt-3 p-3" >
+            <div class="card-body pt-3" id="user-list">
+                {% include 'users/partials/users.html' %}
+            </div>
+            {% include 'partials/pagination.html' with queryset=users custom_range=custom_range%}
+          </div>
+          
+        </div>
+      </div>
+    </secton>
+{% endblock %}1

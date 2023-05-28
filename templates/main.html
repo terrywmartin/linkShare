@@ -1,0 +1,39 @@
+{% load static i18n %}
+{% load django_htmx %}
+
+{% include 'head.html' %}
+
+        
+{% block navbar %}{% endblock %}
+{% if user.is_authenticated %}
+{% comment %} {% include 'sidebar.html' %} {% endcomment %}
+{% endif %}
+<main id="main" class="main">
+              
+       
+
+    <section class="section">
+     {% include 'partials/messages.html' %}
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+          <div class="card">
+            <div class="card-body">
+              
+                {% block content %}{% endblock %}
+          
+            </div>
+          </div>
+
+        </div>
+
+     
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+       
+        <!-- ======= Footer ======= -->
+  {% include 'footer.html' %}
+ 
+

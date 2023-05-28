@@ -1,0 +1,12 @@
+wheel
+Pillow
+gunicorn
+psycopg2-binary
+whitenoise
+django-dotenv
+argon2-cffi
+argon2-cffi-bindings
+django
+django-htmx
+django-phonenumber-field[phonenumbers]
+qrcode==7.3.1

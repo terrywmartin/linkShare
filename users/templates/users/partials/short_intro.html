@@ -1,0 +1,1 @@
+<h3>{{ user.user_profile.short_intro}} {% if user.id == request.user.id %}<span hx-get="{% url 'users:edit_short_intro' user.id %}" hx-trigger="click" hx-target="#short_intro" hx-swap="innerHTML"><i class="fa-solid fa-pencil"></i></span> {% endif %}</h3>

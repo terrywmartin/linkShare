@@ -1,0 +1,35 @@
+<form class="row g-3 align-middle" hx-post="{% url 'list:save_links' %}">
+   
+    {% for field in link_form %}
+    {% if field.label == 'Type'%}
+     <div class="col-md-2 mb-3 align-middle" >
+        {{ field.label }}
+        {{ field }}
+     </div>
+     {% else %}
+    <div class="col-md-7 mb-3 align-middle" >
+        {{ field.label }}
+        {{ field }}
+     </div>
+     
+     {% endif %}
+    {% endfor %}
+    
+    <div class="col-3  align-self-center">
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+        {% if link != None %}<a hx-delete="{% url 'list:delete_link' link.id %}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+        {% else %}
+        <a hx-get="{% url 'list:show_links_tab' request.user.id %}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+        {% endif %}
+
+    </div>
+    
+
+</form>
+ {% comment %} <div class="col-4  align-self-center">
+        <button class="btn btn-success btn-sm"
+        hx-get="{% url 'list:create_link' %}"
+        hx-target="#links-edit"
+        hx-swap="beforeend">+ Add Link</button>
+</div> {% endcomment %}
+    

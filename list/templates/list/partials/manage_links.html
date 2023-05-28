@@ -1,0 +1,16 @@
+
+<ul class="list-group" id="link-group">
+{% for link in links %}
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">{% if link.type != 'other' %}
+        <i class="fa-brands fa-{{link.type}}"></i>
+        {% endif %} {{ link.label }}</div>
+        <div class="col-lg-9 col-md-8" id="link">{{ link.link }} <span hx-get="{% url 'list:edit_link' link.id %}" hx-trigger="click" hx-swap="innerHTML"><i class="fa-solid fa-pencil"></i></span></div>
+    </div>
+{% endfor %}                
+</ul>
+<br>
+ <button class="btn btn-success btn-sm"
+        hx-get="{% url 'list:create_link' %}"
+        hx-target="#link-group"
+        hx-swap="beforeend">+ Add Link</button>

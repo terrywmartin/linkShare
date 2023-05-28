@@ -1,0 +1,6 @@
+<form hx-post="{% url 'users:edit_short_intro' user.id %}" hx-target="#short_intro">
+    {% csrf_token %}
+    <input type="text" name="short_intro" class="form-control" id="short_intro" value="{{ user.user_profile.short_intro }} " >
+    <br>
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+</form>

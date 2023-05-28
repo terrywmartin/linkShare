@@ -1,0 +1,22 @@
+
+<ul class="list-group">
+{% for link in links %}
+    {% comment %} <li class="list-group-item"><i class="fa-brands fa-{{link.type}}"></i> {{link.link}}</li> {% endcomment %}
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 label">{% if link.type != 'other' %}
+        <i class="fa-brands fa-{{link.type}}"></i>
+        {% endif %} {{ link.label }}</div>
+        <div class="col-lg-9 col-md-8">{{ link.link }} </div>
+      
+    </div>
+{% endfor %}                
+</ul>
+{% comment %} 
+                  <div class="row">
+                    
+                    <div class="col-lg-3 col-md-4 label">{{ link.type }}</div>
+                    <div class="col-lg-9 col-md-8">{{ link.link }} </div>
+                
+                  </div>
+ {% endcomment %}
