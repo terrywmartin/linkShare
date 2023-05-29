@@ -10,3 +10,6 @@ django
 django-htmx
 django-phonenumber-field[phonenumbers]
 qrcode==7.3.1
+django-storages
+boto3
+

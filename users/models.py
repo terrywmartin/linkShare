@@ -12,6 +12,8 @@ from core.utils import email_user
 
 import uuid
 
+from core.storage_backends import PublicMediaStorage
+
 # Create your models here.
 class User(AbstractUser):
    
@@ -46,7 +48,7 @@ class UserProfile(models.Model):
    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
    short_intro = models.CharField(max_length=25, blank=True, null=True)
    bio = models.TextField(blank=True, null=True)
-   profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default="profiles/user-default.png")
+   profile_image = models.ImageField(blank=False, storage=PublicMediaStorage(), upload_to='profiles/', default="profiles/user-default.png")
    user = models.OneToOneField(User, related_name="user_profile", on_delete=models.CASCADE, null=True, blank=True)
    def __str__(self):
         return str(self.user.username)
