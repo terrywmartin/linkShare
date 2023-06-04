@@ -8,7 +8,8 @@ from django.conf import settings
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from core.utils import email_user
+#from core.utils import email_user
+from core.tasks import email_user
 
 import uuid
 
@@ -29,7 +30,7 @@ class User(AbstractUser):
          'token': default_token_generator.make_token(self),
       })
       
-      response = email_user(self.email, html, subject="Activate account")
+      response = email_user.delay(self.email, html, subject="Activate account")
 
    def send_password_reset(self):
       
@@ -41,7 +42,7 @@ class User(AbstractUser):
          'token': default_token_generator.make_token(self),
       })
       
-      response = email_user(self.email, html, subject='Reset Password')
+      response = email_user.delay(self.email, html, subject='Reset Password')
       
 
 class UserProfile(models.Model):
