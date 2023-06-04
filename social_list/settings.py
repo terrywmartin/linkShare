@@ -29,9 +29,9 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if int(os.getenv('DEBUG')) == 1 else False
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-APP_NAME = "Socials List"
+APP_NAME = "Link Share"
 APP_URL = str(os.getenv('APP_URL'))
 
 # Set session params
