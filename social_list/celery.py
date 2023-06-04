@@ -2,7 +2,7 @@ import os
 
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'captureWebhooks.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social_list.settings')
 
 app = Celery('social_list')
 
