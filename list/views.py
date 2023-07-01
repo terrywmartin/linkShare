@@ -51,10 +51,11 @@ class ListGetLinks(LoginRequiredMixin, View):
         }
         return render(request, 'list/partials/manage_links.html', context)
 class ListEditLinks(LoginRequiredMixin, View):
-    def get(self, request, pk):
+    def get(self, request,pk):
         if request.htmx == False:
             return Http404
         try:
+           
             link = Link.objects.get(id=pk, user=request.user)
             
             form = LinkModelForm(instance=link)
@@ -78,11 +79,11 @@ class ListDeleteLink(LoginRequiredMixin, View):
             link = Link.objects.get(id=pk)
             link.delete()
         except:
-            pass
+            print("error deleting link")
 
         try:
-            user = User.objects.get(id= pk)
-            links = list(Link.objects.filter(user=user).values('type','link','id'))
+            #user = User.objects.get(id= pk)
+            links = list(Link.objects.filter(user=request.user).values('type','link','id'))
             
         except:
             messages.error(request, "Cannot load links.")
@@ -112,10 +113,12 @@ class ListSaveLinks(LoginRequiredMixin, View):
             return Http404
         try:
             print(request.POST)
+            pk = request.POST['linkId']
             link_type = request.POST['type']
             link_link = request.POST['link']
             try:
-                link = Link.objects.get(user=request.user,type=link_type,link=link_link)
+                #link = Link.objects.get(user=request.user,type=link_type,link=link_link)
+                link = Link.objects.get(user=request.user,id=pk)
                 link_form = LinkModelForm(request.POST, instance=link)
 
             except:
