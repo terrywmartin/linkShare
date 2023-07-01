@@ -33,6 +33,6 @@ class Link(models.Model):
     type = models.CharField(choices=SOCIAL_LINKS,max_length=100)
 
     def __str__(self):
-        return self.handle
+        return self.user.username + " - " + self.link
     
 
