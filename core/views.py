@@ -11,7 +11,7 @@ class Index(View):
     def get(self, request):
         users = User.objects.all().filter(is_superuser=False).defer('password')
 
-        custom_range, users = paginate_users(request, users, 1)
+        custom_range, users = paginate_users(request, users, 10)
         context = {
             'users': users,
             'custom_range': custom_range

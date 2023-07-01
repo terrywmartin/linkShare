@@ -58,10 +58,11 @@ class UsersRegisterUser(View):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            user = User(username=username,password=password_hash,first_name=first_name,last_name=last_name,email=email,is_staff=False,is_active=False,is_superuser=False)
+            user = User(username=username,password=password_hash,first_name=first_name,last_name=last_name,email=email,is_staff=False,is_active=True,is_superuser=False)
             user.save()
-            user.send_activation()
-            messages.success(request, "User activation email has been sent.")
+            #user.send_activation()
+            #messages.success(request, "User activation email has been sent.")
+            messages.success(request, "Your account has been created.")
         else:
             messages.error(request,'Error in form validation.')
             context = {
